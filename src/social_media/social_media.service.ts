@@ -14,7 +14,7 @@ export class SocialMediaService {
    const verify = await this.socialMediaModula.findOne({
      where: { social_media: createSocialMediaDto.social_media},
    });
-   if(!verify){
+   if(verify){
     throw new ConflictException('Bu social media mavjud')
    }
    const newSocial = await this.socialMediaModula.create(createSocialMediaDto)

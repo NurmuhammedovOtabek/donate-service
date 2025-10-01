@@ -18,8 +18,8 @@ export class CardsController {
   }
 
   @Get("recipientId/:recipientId")
-  findOneByRecipient(recipientId: number) {
-    return this.cardsService.findOneByRecipient(recipientId)
+  findOneByRecipient(@Param("recipientId") recipientId: number) {
+    return this.cardsService.findOneByRecipient(recipientId);
   }
 
   @Get(":id")

@@ -13,7 +13,7 @@ export class RecipientService {
 
   async create(createRecipientDto: CreateRecipientDto) {
     const recipient = await this.findOneByEmail(createRecipientDto.email)
-    if(!recipient){
+    if(recipient){
       return "Bunda email egasi mavjud"
     }
     const hashedPassword = await bcrypt.hash(createRecipientDto.password, 7)

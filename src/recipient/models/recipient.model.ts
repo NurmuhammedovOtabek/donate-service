@@ -52,8 +52,7 @@ export class Recipient extends Model<Recipient, IRecipientCreationAttr> {
   declare addres: string;
 
   @Column({
-    type: DataType.STRING(),
-    allowNull: false,
+    type: DataType.STRING()
   })
   declare token: string;
 
