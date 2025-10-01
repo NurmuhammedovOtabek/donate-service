@@ -23,7 +23,7 @@ import { ResipientSocialModule } from './resipient_social/resipient_social.modul
     RecipientModule,
     CardsModule,
     SocialMediaModule,
-    ResipientSocialModule,
+    ResipientSocialModule
   ],
   controllers: [],
   providers: [],

@@ -1,5 +1,7 @@
-import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript"
+import { BelongsToMany, Column, DataType, HasMany, Model, Table } from "sequelize-typescript"
 import { Card } from "../../cards/models/card.model"
+import { ResipientSocial } from "../../resipient_social/models/resipient_social.model"
+import { SocialMedia } from "../../social_media/models/social_media.model"
 
 interface IRecipientCreationAttr{
     name:string
@@ -57,4 +59,10 @@ export class Recipient extends Model<Recipient, IRecipientCreationAttr> {
 
   @HasMany(()=>Card)
   cards:Card[]
+
+  @HasMany(()=>ResipientSocial)
+  resipientSocial:ResipientSocial[]
+
+  @BelongsToMany(()=>SocialMedia, ()=>ResipientSocial)
+  socialMedias:SocialMedia[]
 }
