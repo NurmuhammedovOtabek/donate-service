@@ -5,6 +5,8 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { CardsModule } from './cards/cards.module';
 import { SocialMediaModule } from './social_media/social_media.module';
 import { ResipientSocialModule } from './resipient_social/resipient_social.module';
+import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -23,7 +25,9 @@ import { ResipientSocialModule } from './resipient_social/resipient_social.modul
     RecipientModule,
     CardsModule,
     SocialMediaModule,
-    ResipientSocialModule
+    ResipientSocialModule,
+    AdminModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],

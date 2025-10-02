@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ResipientSocialService } from './resipient_social.service';
 import { CreateResipientSocialDto } from './dto/create-resipient_social.dto';
 import { UpdateResipientSocialDto } from './dto/update-resipient_social.dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
+@ApiBearerAuth()
 @Controller('resipient-social')
 export class ResipientSocialController {
   constructor(private readonly resipientSocialService: ResipientSocialService) {}

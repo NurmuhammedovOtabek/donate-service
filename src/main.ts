@@ -15,6 +15,7 @@ async function start() {
     .setTitle("Donate Service")
     .setDescription("Donate service api description")
     .setVersion("1.0")
+    .addBearerAuth()
     .addTag("nest Js")
     .build();
     const documentFactory = () => SwaggerModule.createDocument(app, config);
