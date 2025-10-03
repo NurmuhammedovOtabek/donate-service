@@ -4,9 +4,11 @@ import { RecipientController } from './recipient.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Recipient } from './models/recipient.model';
 import { Card } from '../cards/models/card.model';
+import { Shop } from '../shop/models/shop.model';
+import { ResipientSocial } from '../resipient_social/models/resipient_social.model';
 
 @Module({
-  imports:[SequelizeModule.forFeature([Recipient, Card])],
+  imports:[SequelizeModule.forFeature([Recipient, Card, Shop, ResipientSocial])],
   controllers: [RecipientController],
   providers: [RecipientService],
   exports:[RecipientService]

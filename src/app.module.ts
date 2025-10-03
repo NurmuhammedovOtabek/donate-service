@@ -7,6 +7,10 @@ import { SocialMediaModule } from './social_media/social_media.module';
 import { ResipientSocialModule } from './resipient_social/resipient_social.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
+import { ShopModule } from './shop/shop.module';
+import { CategoryModule } from './category/category.module';
+import { OrderModule } from './order/order.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -27,7 +31,11 @@ import { AuthModule } from './auth/auth.module';
     SocialMediaModule,
     ResipientSocialModule,
     AdminModule,
-    AuthModule
+    AuthModule,
+    ShopModule,
+    CategoryModule,
+    OrderModule,
+    UserModule
   ],
   controllers: [],
   providers: [],

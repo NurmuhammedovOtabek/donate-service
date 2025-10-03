@@ -2,6 +2,7 @@ import { BelongsToMany, Column, DataType, HasMany, Model, Table } from "sequeliz
 import { Card } from "../../cards/models/card.model"
 import { ResipientSocial } from "../../resipient_social/models/resipient_social.model"
 import { SocialMedia } from "../../social_media/models/social_media.model"
+import { Shop } from "../../shop/models/shop.model"
 
 interface IRecipientCreationAttr{
     name:string
@@ -58,6 +59,9 @@ export class Recipient extends Model<Recipient, IRecipientCreationAttr> {
 
   @HasMany(()=>Card)
   cards:Card[]
+
+  @HasMany(()=>Shop)
+  shops:Shop[]
 
   @HasMany(()=>ResipientSocial)
   resipientSocial:ResipientSocial[]

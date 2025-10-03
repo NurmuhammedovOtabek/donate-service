@@ -21,7 +21,7 @@ export class CardsService {
   }
 
   async findAll() {
-    const allCsrds = await this.cardModel.findAll()
+    const allCsrds = await this.cardModel.findAll({include:{all:true}})
     return allCsrds
   }
 
