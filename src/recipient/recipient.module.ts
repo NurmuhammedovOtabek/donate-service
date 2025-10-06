@@ -6,9 +6,10 @@ import { Recipient } from './models/recipient.model';
 import { Card } from '../cards/models/card.model';
 import { Shop } from '../shop/models/shop.model';
 import { ResipientSocial } from '../resipient_social/models/resipient_social.model';
+import { Donate } from '../donate/models/donate.model';
 
 @Module({
-  imports:[SequelizeModule.forFeature([Recipient, Card, Shop, ResipientSocial])],
+  imports:[SequelizeModule.forFeature([Recipient, Card, Shop, ResipientSocial, Donate])],
   controllers: [RecipientController],
   providers: [RecipientService],
   exports:[RecipientService]

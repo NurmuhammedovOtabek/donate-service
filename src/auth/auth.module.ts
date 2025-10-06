@@ -7,6 +7,7 @@ import { Recipient } from '../recipient/models/recipient.model';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { UserModule } from '../user/user.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
     AdminModule,
     RecipientModule,
     Recipient,
+    UserModule
   ],
   controllers: [AuthController],
   providers: [AuthService],

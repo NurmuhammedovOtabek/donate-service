@@ -13,6 +13,10 @@ import { SinginRecipientDto } from "../recipient/dto/singin_recipient.dto";
 import { SinginAdmintDto } from "../admin/dto/singin-admin.dto";
 import { Admin } from "../admin/models/admin.model";
 import { InjectModel } from "@nestjs/sequelize";
+import { UserService } from "../user/user.service";
+import { User } from "../user/models/user.model";
+import { CreateUserDto } from "../user/dto/create-user.dto";
+import { SinginUserDto } from "../user/dto/singin-user.dto";
 
 @Injectable()
 export class AuthService {
@@ -21,7 +25,8 @@ export class AuthService {
     private readonly recipientService: RecipientService,
     @InjectModel(Recipient)
     private readonly recipientModel: typeof Recipient,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
+    private readonly userService: UserService
   ) {}
 
   private async genereteTokenR(recipient: Recipient) {
@@ -29,6 +34,14 @@ export class AuthService {
       id: recipient.id,
       email: recipient.email,
       full_name: recipient.full_name,
+    };
+    return { token: this.jwtService.sign(paylod) };
+  }
+  private async genereteTokenU(user: User) {
+    const paylod = {
+      id: user.id,
+      email: user.email,
+      full_name: user.full_name,
     };
     return { token: this.jwtService.sign(paylod) };
   }
@@ -42,6 +55,7 @@ export class AuthService {
     return { token: this.jwtService.sign(paylod) };
   }
 
+  // Recipient
   async singupRecipient(createRecipientDto: CreateRecipientDto) {
     const verfy = await this.recipientService.findOneByEmail(
       createRecipientDto.email
@@ -73,6 +87,7 @@ export class AuthService {
     return this.genereteTokenR(recipient);
   }
 
+  //Admin
   async singinAdmin(singinAdminDto: SinginAdmintDto) {
     const admin = await this.adminService.findOneByEmail(singinAdminDto.email);
     if (!admin) {
@@ -87,5 +102,34 @@ export class AuthService {
     }
 
     return this.genereteTokenA(admin);
+  }
+
+
+  //user
+  async singupUser(createUsertDto: CreateUserDto) {
+    const verfy = await this.userService.findOneByEmail(createUsertDto.email);
+    if (verfy) {
+      throw new ConflictException("Bu email allaqachon royxatdan otgan");
+    }
+    const newUsert = await this.userService.create(createUsertDto);
+    return newUsert;
+  }
+
+  async singinuser(singinuserDto: SinginUserDto) {
+    const user = await this.userService.findOneByEmail(
+      singinuserDto.email
+    );
+    if (!user) {
+      throw new UnauthorizedException("Email yoki parol notog'ri");
+    }
+    const comperePassword = await bcrypt.compare(
+      singinuserDto.password,
+      user.password
+    );
+    if (!comperePassword) {
+      throw new UnauthorizedException("Email yoki parol notog'ri");
+    }
+
+    return this.genereteTokenU(user);
   }
 }

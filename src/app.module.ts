@@ -11,6 +11,8 @@ import { ShopModule } from './shop/shop.module';
 import { CategoryModule } from './category/category.module';
 import { OrderModule } from './order/order.module';
 import { UserModule } from './user/user.module';
+import { DonateModule } from './donate/donate.module';
+import { PaymentsModule } from './payments/payments.module';
 
 @Module({
   imports: [
@@ -35,7 +37,9 @@ import { UserModule } from './user/user.module';
     ShopModule,
     CategoryModule,
     OrderModule,
-    UserModule
+    UserModule,
+    DonateModule,
+    PaymentsModule
   ],
   controllers: [],
   providers: [],

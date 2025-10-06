@@ -3,6 +3,7 @@ import { Card } from "../../cards/models/card.model"
 import { ResipientSocial } from "../../resipient_social/models/resipient_social.model"
 import { SocialMedia } from "../../social_media/models/social_media.model"
 import { Shop } from "../../shop/models/shop.model"
+import { Donate } from "../../donate/models/donate.model"
 
 interface IRecipientCreationAttr{
     name:string
@@ -65,6 +66,9 @@ export class Recipient extends Model<Recipient, IRecipientCreationAttr> {
 
   @HasMany(()=>ResipientSocial)
   resipientSocial:ResipientSocial[]
+
+  @HasMany(()=>Donate)
+  donates:Donate[]
 
   @BelongsToMany(()=>SocialMedia, ()=>ResipientSocial)
   socialMedias:SocialMedia[]
