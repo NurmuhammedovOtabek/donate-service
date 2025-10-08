@@ -17,6 +17,11 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @Get("activate/:link")
+  activateUser(@Param("link") link: string) {
+    return this.userService.activateUser(link);
+  }
+
   @Get("email:email")
   findOneByEmail(@Param("email") email: string) {
     return this.userService.findOneByEmail(email);

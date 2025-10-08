@@ -14,14 +14,19 @@ export class RecipientController {
     return this.recipientService.create(createRecipientDto);
   }
 
+  @Get("activate/:link")
+  activateUser(@Param("link") link: string) {
+    return this.recipientService.activateRecipient(link);
+  }
+
   @Get()
   findAll() {
     return this.recipientService.findAll();
   }
-  
+
   @Get("email/:email")
   findOneByEmail(@Param("email") email: string) {
-    return this.recipientService.findOneByEmail( email);
+    return this.recipientService.findOneByEmail(email);
   }
 
   @Get(":id")

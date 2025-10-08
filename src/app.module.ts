@@ -13,6 +13,8 @@ import { OrderModule } from './order/order.module';
 import { UserModule } from './user/user.module';
 import { DonateModule } from './donate/donate.module';
 import { PaymentsModule } from './payments/payments.module';
+import { MailService } from './mail/mail.service';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -39,9 +41,10 @@ import { PaymentsModule } from './payments/payments.module';
     OrderModule,
     UserModule,
     DonateModule,
-    PaymentsModule
+    PaymentsModule,
+    MailModule
   ],
   controllers: [],
-  providers: [],
+  providers: [MailService],
 })
 export class AppModule {}

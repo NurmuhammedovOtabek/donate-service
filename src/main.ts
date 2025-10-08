@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import cookieParser from 'cookie-parser';
 
 async function start() {
   const PORT = process.env.PORT ?? 3001;
@@ -10,6 +11,7 @@ async function start() {
   });
 
   app.useGlobalPipes(new ValidationPipe())
+  app.use(cookieParser())
 
   const config = new DocumentBuilder()
     .setTitle("Donate Service")

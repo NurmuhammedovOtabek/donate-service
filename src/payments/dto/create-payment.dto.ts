@@ -6,10 +6,12 @@ export class CreatePaymentDto {
     example: 1,
   })
   userId: number;
+
   @ApiProperty({
     example: 1,
   })
   donateId: number;
+  
   @ApiProperty({
     example: 1,
   })

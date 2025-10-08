@@ -7,9 +7,10 @@ import { Card } from '../cards/models/card.model';
 import { Shop } from '../shop/models/shop.model';
 import { ResipientSocial } from '../resipient_social/models/resipient_social.model';
 import { Donate } from '../donate/models/donate.model';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
-  imports:[SequelizeModule.forFeature([Recipient, Card, Shop, ResipientSocial, Donate])],
+  imports:[SequelizeModule.forFeature([Recipient, Card, Shop, ResipientSocial, Donate]), MailModule],
   controllers: [RecipientController],
   providers: [RecipientService],
   exports:[RecipientService]

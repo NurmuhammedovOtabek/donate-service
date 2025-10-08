@@ -54,22 +54,34 @@ export class Recipient extends Model<Recipient, IRecipientCreationAttr> {
   declare addres: string;
 
   @Column({
-    type: DataType.STRING()
+    type: DataType.STRING(),
   })
   declare token: string;
 
-  @HasMany(()=>Card)
-  cards:Card[]
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false
+  })
+  declare is_active: boolean;
 
-  @HasMany(()=>Shop)
-  shops:Shop[]
+  @Column({
+    type: DataType.UUID,
+    defaultValue: DataType.UUIDV4,
+  })
+  declare activation_link: string;
 
-  @HasMany(()=>ResipientSocial)
-  resipientSocial:ResipientSocial[]
+  @HasMany(() => Card)
+  cards: Card[];
 
-  @HasMany(()=>Donate)
-  donates:Donate[]
+  @HasMany(() => Shop)
+  shops: Shop[];
 
-  @BelongsToMany(()=>SocialMedia, ()=>ResipientSocial)
-  socialMedias:SocialMedia[]
+  @HasMany(() => ResipientSocial)
+  resipientSocial: ResipientSocial[];
+
+  @HasMany(() => Donate)
+  donates: Donate[];
+
+  @BelongsToMany(() => SocialMedia, () => ResipientSocial)
+  socialMedias: SocialMedia[];
 }

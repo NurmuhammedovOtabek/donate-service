@@ -8,11 +8,14 @@ import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UserModule } from '../user/user.module';
+import { Admin } from '../admin/models/admin.model';
+import { User } from '../user/models/user.model';
+import { MailModule } from '../mail/mail.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    SequelizeModule.forFeature([Recipient]),
+    SequelizeModule.forFeature([Recipient, Admin, User]),
     JwtModule.register({
       global: true,
       secret: process.env.SECRET_KEY,
@@ -21,7 +24,8 @@ import { UserModule } from '../user/user.module';
     AdminModule,
     RecipientModule,
     Recipient,
-    UserModule
+    UserModule,
+    MailModule
   ],
   controllers: [AuthController],
   providers: [AuthService],

@@ -54,9 +54,15 @@ export class User extends Model<User, IUserCreationAttr> {
   })
   declare token: string;
 
-  @HasMany(()=>Donate)
-  donates:Donate[]
+  @Column({
+    type: DataType.UUID,
+    defaultValue: DataType.UUIDV4,
+  })
+  declare activation_link: string;
 
-  @HasMany(()=>Order)
-  orders:Order[]
+  @HasMany(() => Donate)
+  donates: Donate[];
+
+  @HasMany(() => Order)
+  orders: Order[];
 }
